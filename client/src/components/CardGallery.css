@@ -1,0 +1,40 @@
+.cardGalleryContainer {
+  background-color: #272932;
+  border-radius: 5px;
+  height: 90%;
+  width: 90%;
+  color: #f0eff4;
+}
+
+.cardProperties {
+  width: 350px;
+  font-size: 20px;
+}
+
+.cardProperties:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  background-color: var(--cardColor);
+}
+
+.heart {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  z-index: 3;
+  color: black;
+}
+
+.heart:hover {
+  fill: red;
+}
+
+.filledHeart {
+  color: red;
+  fill: red;
+}
+
+.filledHeart:hover {
+  fill: none;
+}

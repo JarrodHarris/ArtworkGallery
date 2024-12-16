@@ -1,0 +1,14 @@
+.about-left {
+    /* display: flex; */
+    /* justify-content: left; */
+    display: flex;
+    /* align-self: flex-start; */
+    justify-content: flex-start;
+    /* align-items:flex-start; */
+    width: 50%;
+    height: 70%;
+    color: #F0EFF4;
+    background-color: blue;
+    border-radius: 5px;
+    
+}

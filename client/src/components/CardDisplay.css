@@ -1,0 +1,47 @@
+.cardProperties {
+  width: 350px;
+  font-size: 20px;
+}
+
+.cardProperties:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  background-color: var(--cardColor);
+}
+
+.heart {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  z-index: 3;
+  color: black;
+}
+
+.heart:hover {
+  fill: red;
+}
+
+.filledHeart {
+  color: red;
+  fill: red;
+}
+
+.filledHeart:hover {
+  fill: none;
+}
+
+.selectContainer {
+  position: relative;
+  left: 95%;
+  width: 140px;
+  margin-bottom: 20px;
+}
+.selectProperties:hover {
+  cursor: pointer;
+}
+
+.selectProperties {
+  border-radius: 10px;
+  border: 1.5px solid #4bb3fd;
+}

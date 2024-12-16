@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+/* Home Page CSS */
+
+.home,
+.about,
+.uploadArtwork {
+  display: flex;
+  flex-wrap: wrap;
+  /* height: 100vh; */
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background-color: #f0eff4;
+  color: #272932;
+}
+
+.gallery {
+  display: flex;
+  /* align-items: center; */
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #f0eff4;
+  font-size: 3rem;
+  height: 100vh;
+}
+
+.home {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+/* Navbar & Sidebar CSS */
+
+.menu-bars {
+  margin-left: 2rem;
+  font-size: 2rem;
+  background: none;
+  color: #f0eff4;
+}
+
+.menu-bars:hover {
+  opacity: 65%;
+  cursor: pointer;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background-color: #272932;
+}
+
+.navbar-right {
+  color: #f0eff4;
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.nav-menu {
+  background-color: #272932;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 500ms ease-in-out;
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: 350ms;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  height: 60px;
+  background-color: #272932;
+}
+
+.nav-text a {
+  text-decoration: none;
+  color: #4bb3fd;
+  font-size: 18px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.nav-text a:hover {
+  background-color: #4bb3fd;
+  color: #272932;
+}
+
+.nav-menu-items {
+  width: 100%;
+  padding-left: 0px;
+}
+
+.navbar-toggle {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sidebar-button {
+  left: 10%;
+  position: absolute;
+  bottom: 10px;
+  height: 80px;
+  width: 200px;
+  background-color: #4bb3fd;
+  color: #f0eff4;
+  border-radius: 5px;
+}
+
+.sidebar-button:hover {
+  background-color: #f0eff4;
+  color: #272932;
+  transition: 200ms;
+  cursor: pointer;
+}
+
+.secondary-button {
+  background-color: #4bb3fd;
+  color: #f0eff4;
+}
+
+.secondary-button:hover {
+  background-color: #272932;
+  color: #f0eff4;
+}

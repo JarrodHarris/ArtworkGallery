@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import {
+  changeArtworkFavourite,
+  changeArtworkBackground,
+} from "../functions/cardFunctions";
 import { FiHeart } from "react-icons/fi";
+import { BiSolidImageAdd } from "react-icons/bi";
+import { LuImageMinus } from "react-icons/lu";
 import "./CardDisplay.css";
 
 export default function CardDisplay() {
@@ -25,20 +31,6 @@ export default function CardDisplay() {
     retrieveCardDisplayArtworks();
   }, [selectOption]);
 
-  const changeArtworkFavourite = async (artworkId) => {
-    console.log("artwork to be made as a favourite: " + artworkId); //testing
-
-    try {
-      await axios.put("/artworks/favouriteUpdate/" + artworkId);
-
-      console.log("Artwork successfully changed");
-
-      window.location.reload(); //can either use this where it refreshes whole page, or need to figure out how to only reload component
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   function Card(props) {
     const cardStyle = {
       "--cardColor": props.cardColor,
@@ -58,38 +50,38 @@ export default function CardDisplay() {
               className="card-img-top"
               alt="Artwork"
             />
-            <FiHeart
-              className={
-                props.favourite === true ? "heart filledHeart" : "heart"
-              }
-              onClick={() => changeArtworkFavourite(props.artworkId)}
-            />
+            <div className="backgroundContainer">
+              {props.background === true ? (
+                <LuImageMinus
+                  className="minusBackground"
+                  onClick={() => changeArtworkBackground(props.artworkId)}
+                />
+              ) : (
+                <BiSolidImageAdd
+                  className="addBackground"
+                  onClick={() => changeArtworkBackground(props.artworkId)}
+                />
+              )}
+            </div>
+            <div className="heartContainer">
+              <FiHeart
+                className={
+                  props.favourite === true ? "heart filledHeart" : "heart"
+                }
+                onClick={() => changeArtworkFavourite(props.artworkId)}
+              />
+            </div>
           </div>
           <div
             className="card-body"
             style={{
-              height: "80px",
+              height: "100px",
             }}
           >
             <h5 className="card-title">{props.filename}</h5>
-            <p className="card-text">{props.description}</p>
-          </div>
-
-          <div
-            className="card-footer"
-            style={{
-              display: "flex",
-            }}
-          >
-            <small className="text-body-secondary">{props.size} mb</small>
-            <small
-              className="text-body-secondary"
-              style={{
-                marginLeft: "110px",
-              }}
-            >
-              <b>{props.type}</b>
-            </small>
+            <p className="card-text" style={{ fontSize: "16px" }}>
+              {props.description}
+            </p>
           </div>
         </div>
         <CardModal filename={props.filename} />
@@ -156,6 +148,7 @@ export default function CardDisplay() {
             filename={artwork.filename}
             description={artwork.description}
             favourite={artwork.favourite}
+            background={artwork.background}
             size={artwork.size}
             type={artwork.type}
             cardColor={artwork.cardColor}

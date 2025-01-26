@@ -1,13 +1,12 @@
 .cardGalleryContainer {
-  background-color: #272932;
   border-radius: 5px;
   height: 90%;
   width: 90%;
-  color: #f0eff4;
+  color: black;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
 .cardProperties {
-  width: 350px;
   font-size: 20px;
 }
 
@@ -18,11 +17,34 @@
   background-color: var(--cardColor);
 }
 
-.heart {
+.editableCard {
+  filter: brightness(70%);
+}
+
+/*CARD ICONS*/
+.backgroundIconContainer {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  z-index: 3;
+}
+
+.addBackground:hover {
+  color: var(--cardColor);
+}
+
+.minusBackground:hover {
+  color: white;
+}
+
+.heartContainer {
   position: absolute;
   right: 10px;
   top: 5px;
   z-index: 3;
+}
+
+.heart {
   color: black;
 }
 
@@ -37,4 +59,105 @@
 
 .filledHeart:hover {
   fill: none;
+}
+
+.editContainer {
+  z-index: 3;
+  position: absolute;
+  bottom: 60%;
+  left: 45%;
+}
+
+.editContainer:hover {
+  transform: scale(1.2);
+  color: white;
+}
+
+.editCogContainer {
+  color: black;
+  position: absolute;
+  top: 155px;
+  right: 140px;
+  width: 170px;
+}
+
+.editCog {
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
+}
+
+.editCog:hover {
+  cursor: pointer;
+  transform: scale(1.3);
+  transition: 0.2s ease-in-out;
+  rotate: 100deg;
+}
+
+.starRatingContainer {
+  z-index: 3;
+  position: absolute;
+  top: 68%;
+  right: 2%;
+}
+
+/*FLIP CARD ANIMATION*/
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flipCard {
+  background-color: transparent;
+  /* width: 100%;*/
+  height: 580px;
+  max-height: 580px;
+  width: 320px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flipCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you click over the flip box container */
+.flipCard:active .flipCardInner {
+  transform: rotateY(180deg);
+  /* background-color: red; */
+}
+
+/*CURRENTLY NOTHING TIED TO THIS*/
+.rotateCard .flipCardInner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flipCardFront,
+.flipCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flipCardFront {
+  /* background-color: #bbb; */
+  color: black;
+}
+
+/* Style the back side */
+.flipCardBack {
+  /* background-color: var(--cardColor); */
+  background-color: #f1f1f1;
+  color: #272932;
+  transform: rotateY(180deg);
+}
+
+.flipCardBackContainer {
+  height: 580px;
 }

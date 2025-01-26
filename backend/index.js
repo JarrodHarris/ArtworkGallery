@@ -5,10 +5,13 @@ const colors = require("colors");
 const multer = require("multer");
 const cors = require("cors");
 const path = require("path");
+const bodyParser = require("body-parser");
 const artworkRoute = require("./routes/artworks");
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const connectDB = async () => {
   app.use(cors());
@@ -36,7 +39,7 @@ const connectDB = async () => {
       cb(null, "../client/public/images");
     },
     filename: (req, file, cb) => {
-      cb(null, file.originalname);
+      cb(null, file.originalname.replace(/ /g, "_")); //replace any " "(empty space) with underscore. Allows for the image file to be read and display
     },
   });
 

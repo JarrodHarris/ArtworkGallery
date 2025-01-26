@@ -8,8 +8,17 @@ const ArtworkSchema = new mongoose.Schema(
     },
     description: {
       type: String,
+      max: 60,
     },
     favourite: {
+      type: Boolean,
+      default: false,
+    },
+    rating: {
+      type: Number,
+      default: 0,
+    },
+    background: {
       type: Boolean,
       default: false,
     },

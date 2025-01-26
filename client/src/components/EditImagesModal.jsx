@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { RiArrowDropLeftFill } from "react-icons/ri";
 import { RiArrowDropRightFill } from "react-icons/ri";
 import axios from "axios";
@@ -15,6 +15,13 @@ export default function EditImagesModal({ files }) {
   const [cardColor, setCardColor] = useState("#4bb3fd");
   const [artworks, setArtworks] = useState([]);
 
+  useEffect(() => {
+    const retrieveCardDisplayArtworks = async () => {
+      console.log(files[0].path);
+    };
+    retrieveCardDisplayArtworks();
+  }, []);
+
   const saveArtwork = (event) => {
     event.preventDefault();
 
@@ -25,10 +32,11 @@ export default function EditImagesModal({ files }) {
 
     if (filename !== "") {
       console.log("filename was change", filename);
+
       setArtworks([
         ...artworks,
         {
-          filename: filename,
+          filename: filename.replace(/ /g, "_"), //replacing any space with underscore.(Allows for the image to be read for the rest of the program)
           description: description,
           lastModifiedDate: files[index].lastModifiedDate,
           size: roundedSize,
@@ -42,7 +50,7 @@ export default function EditImagesModal({ files }) {
       setArtworks([
         ...artworks,
         {
-          filename: event.target.filename.placeholder,
+          filename: event.target.filename.placeholder.replace(/ /g, "_"), //replacing any space with underscore.(Allows for the image to be read for the rest of the program)
           description: description,
           lastModifiedDate: files[index].lastModifiedDate,
           size: roundedSize,
@@ -66,7 +74,7 @@ export default function EditImagesModal({ files }) {
 
     try {
       artworks.forEach(async (artwork) => {
-        axios.post("/artworks", artwork);
+        axios.post("/artworks", artwork); //saving artwork to database
       });
     } catch (error) {
       console.log(error);
@@ -75,11 +83,10 @@ export default function EditImagesModal({ files }) {
     for (let i = 0; i <= artworks.length; i++) {
       console.log(artworks);
       const data = new FormData();
-      // data.append("name", artworks[0].filename);
+      console.log(files[i]); //testing
       data.append("file", files[i]);
-
       try {
-        await axios.post("/upload", data);
+        await axios.post("/upload", data); //saving image file to public/images folder
       } catch (error) {
         console.log(error);
       }
@@ -197,11 +204,12 @@ export default function EditImagesModal({ files }) {
                   </div>
                   <div className="row mb-2">
                     <label htmlFor="description" className="form-label fs-4">
-                      Description
+                      Description <h6>(max Character Limit: 60)</h6>
                     </label>
                     <textarea
                       className="form-control col"
                       rows="6"
+                      maxLength={60}
                       id="description"
                       name="description"
                       value={description}

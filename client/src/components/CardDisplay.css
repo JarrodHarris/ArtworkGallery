@@ -10,11 +10,34 @@
   background-color: var(--cardColor);
 }
 
-.heart {
+.backgroundContainer {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  z-index: 3;
+}
+
+.backgroundContainer:hover {
+  transform: scale(1.2);
+}
+
+.addBackground:hover {
+  color: var(--cardColor);
+}
+
+.minusBackground:hover {
+  /* color: #f0eff4; */
+  color: white;
+}
+
+.heartContainer {
   position: absolute;
   right: 10px;
   top: 5px;
   z-index: 3;
+}
+
+.heart {
   color: black;
 }
 

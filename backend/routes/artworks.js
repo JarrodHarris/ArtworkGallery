@@ -48,6 +48,18 @@ router.get("/favouriteArtworks", async (req, res) => {
   }
 });
 
+//get all 'background' artworks
+router.get("/backgroundArtworks", async (req, res) => {
+  let artworks = [];
+
+  try {
+    artworks = await Artwork.find({ background: "true" });
+    res.status(200).json(artworks);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 //favourite an artwork
 router.put("/favouriteUpdate/:id", async (req, res) => {
   const { id } = req.params;
@@ -55,10 +67,44 @@ router.put("/favouriteUpdate/:id", async (req, res) => {
   try {
     const artwork = await Artwork.findById(id);
     await artwork.updateOne({ favourite: !artwork.favourite });
-    res.status(200).json("artwork has been updated successfully");
-    return artwork.favourite;
+    res.status(200).json(artwork);
+    // return artwork.favourite;
   } catch (error) {
     console.error(error);
+    res.status(500).send(error);
+  }
+});
+
+//make artwork as potential background image
+router.put("/backgroundUpdate/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const artwork = await Artwork.findById(id);
+    await artwork.updateOne({ background: !artwork.background });
+    res.status(200).json(artwork);
+    // return artwork.background;
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+});
+
+//update rating
+router.put("/ratingUpdate/:id", async (req, res) => {
+  const { id } = req.params;
+  const { rating } = req.body;
+
+  try {
+    const artwork = await Artwork.findByIdAndUpdate(
+      id,
+      { rating: rating },
+      { new: true } //returns updated record
+    );
+
+    res.status(200).json(artwork);
+  } catch (error) {
+    console.log(error);
     res.status(500).send(error);
   }
 });

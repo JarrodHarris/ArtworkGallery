@@ -44,7 +44,7 @@ const connectDB = async () => {
   });
 
   const upload = multer({ storage: storage });
-  app.post("/*/api/upload", upload.single("file"), (req, res) => {
+  app.post("/api/upload", upload.single("file"), (req, res) => {
     try {
       return res.status(200).json("File uploaded successfully");
     } catch (error) {
@@ -52,7 +52,7 @@ const connectDB = async () => {
     }
   });
 
-  app.use("/api/artworks", artworkRoute);
+  app.use("/*/api/artworks", artworkRoute);
 
   app.listen(port, () => {
     console.log(`Backend server stared on: ${port}`);

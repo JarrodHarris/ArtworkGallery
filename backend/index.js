@@ -18,10 +18,6 @@ const connectDB = async () => {
 
   mongoose.set("strictQuery", true);
 
-  app.get("/*", function (req, res) {
-    res.sendFile(path.join(__dirname), "build", "index.html");
-  });
-
   try {
     const connect = await mongoose.connect(process.env.MONGO_URI, {
       dbName: "artworks",
@@ -33,6 +29,13 @@ const connectDB = async () => {
   }
 
   app.use(express.json());
+
+  app.use(express.static(path.join(__dirname, "client/build")));
+
+  app.get("/", (req, res) => {
+    res.send("index");
+  });
+
   // app.use(express.static("public"));
 
   // app.use("/images", express.static(path.join(__dirname, "public/images")));

@@ -17,10 +17,14 @@ Artwork
 - filename": String
 - description": String
 - favourite: Boolean
+- rating: Number
+- background: Boolean
 - lastModifiedDate": String,
 - size": Number,
 - type": String,
-- cardColor": String
+- cardColor": String,
+- createdAt: Date,
+- updatedAt: Date,
 
 ---
 

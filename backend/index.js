@@ -18,6 +18,10 @@ const connectDB = async () => {
 
   mongoose.set("strictQuery", true);
 
+  app.get("/*", function (req, res) {
+    res.sendFile(path.join(__dirname), "build", "index.html");
+  });
+
   try {
     const connect = await mongoose.connect(process.env.MONGO_URI, {
       dbName: "artworks",
@@ -52,7 +56,7 @@ const connectDB = async () => {
     }
   });
 
-  app.use("/*/api/artworks", artworkRoute);
+  app.use("/api/artworks", artworkRoute);
 
   app.listen(port, () => {
     console.log(`Backend server stared on: ${port}`);

@@ -11,6 +11,8 @@ const artworkRoute = require("./routes/artworks");
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use(express.static("build"));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const connectDB = async () => {
@@ -38,7 +40,7 @@ const connectDB = async () => {
 
   // app.use(express.static("public"));
 
-  // app.use("/images", express.static(path.join(__dirname, "public/images")));
+  // app.use("/images", express.static(path.join(__dirname , "public/images")));
 
   //creating a place to store the new images
   const storage = multer.diskStorage({

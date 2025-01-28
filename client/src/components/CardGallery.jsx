@@ -29,14 +29,14 @@ export default function CardGallery() {
     const retrieveAllArtworks = async () => {
       const response = await axios.get("/artworks/allArtworks");
       console.log("all artworks for card display");
-      setArtworks(response.data);
-      console.log(response.data);
+      setArtworks(response.data.data);
+      // console.log(response.data);
     };
     const retrieveBackgroundArtworks = async () => {
       const response = await axios.get("/artworks/backgroundArtworks");
       setBackgroundArtworks(response.data);
       console.log("background artworks to choose from");
-      console.log(response.data);
+      console.log(response.data.data);
       // console.log(backgroundArtworks.length);
     };
     const selectRandomBackground = () => {

@@ -15,7 +15,8 @@ import { FiHeart } from "react-icons/fi";
 import "./CardGallery.css";
 
 export default function CardGallery() {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  // const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const PF = "https://artworkgallery-frontend.onrender.com/images/";
   const [artworks, setArtworks] = React.useState([]);
   const [backgroundArtworks, setBackgroundArtworks] = React.useState([]);
   const [backgroundIndex, setBackgroundIndex] = React.useState(0);
@@ -29,14 +30,14 @@ export default function CardGallery() {
     const retrieveAllArtworks = async () => {
       const response = await axios.get("/artworks/allArtworks");
       console.log("all artworks for card display");
-      setArtworks(response.data.data);
+      setArtworks(response.data);
       // console.log(response.data);
     };
     const retrieveBackgroundArtworks = async () => {
       const response = await axios.get("/artworks/backgroundArtworks");
       setBackgroundArtworks(response.data);
       console.log("background artworks to choose from");
-      console.log(response.data.data);
+      console.log(response.data);
       // console.log(backgroundArtworks.length);
     };
     const selectRandomBackground = () => {

@@ -10,7 +10,8 @@ import { LuImageMinus } from "react-icons/lu";
 import "./CardDisplay.css";
 
 export default function CardDisplay() {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  // const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const PF = "https://artworkgallery-frontend.onrender.com/images/";
   const [artworks, setArtworks] = React.useState([]);
   const [selectOption, setSelectOption] = React.useState("All");
 

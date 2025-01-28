@@ -27,9 +27,7 @@ export default function CardGallery() {
 
   React.useEffect(() => {
     const retrieveAllArtworks = async () => {
-      const response = await axios.get(
-        "https://artworkgallery-backend.onrender.com/api/artworks/allArtworks"
-      );
+      const response = await axios.get("/artworks/allArtworks");
       console.log("all artworks for card display");
       setArtworks(response.data);
       console.log(response.data);

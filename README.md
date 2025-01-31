@@ -31,7 +31,7 @@ Artwork
 Build is currently in a local environment and needs to be run through a code complier. **THIS BUILD IS A WORK IN PROGRESS**
 
 **RUN COMMANDS**
-NOTE: .env within both the backend and frontend have been removed and to be given access you will have to request from the owner
+NOTE: Program does need an.env file to run. Access to the file needs to be requested
 
 npm i in respective directories; backend and client
 
